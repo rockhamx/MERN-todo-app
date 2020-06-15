@@ -10,6 +10,11 @@ class CreateTodo extends Component {
       priority: "",
       completed: false,
     };
+    this.priorities = [
+      { level: "Low", value: "低" },
+      { level: "Medium", value: "中" },
+      { level: "High", value: "高" },
+    ];
   }
 
   onChangeTodoDesciption = (event) => {
@@ -81,45 +86,25 @@ class CreateTodo extends Component {
             />
           </div>
           <div className="form-group">
-            <div className="form-check form-check-inline">
-              <input
-                type="radio"
-                value="Low"
-                name="prorityOptions"
-                className="form-check-input"
-                id="priority-low"
-                onChange={this.onChangeTodoPriority}
-              />
-              <label htmlFor="priority-low" className="form-check-label">
-                低
-              </label>
-            </div>
-            <div className="form-check form-check-inline">
-              <input
-                type="radio"
-                value="Medium"
-                name="prorityOptions"
-                className="form-check-input"
-                id="priority-medium"
-                onChange={this.onChangeTodoPriority}
-              />
-              <label htmlFor="priority-medium" className="form-check-label">
-                中
-              </label>
-            </div>
-            <div className="form-check form-check-inline">
-              <input
-                type="radio"
-                value="High"
-                name="prorityOptions"
-                className="form-check-input"
-                id="priority-high"
-                onChange={this.onChangeTodoPriority}
-              />
-              <label htmlFor="priority-high" className="form-check-label">
-                高
-              </label>
-            </div>
+            {/* priority options */}
+            {this.priorities.map((prio) => (
+              <div className="form-check form-check-inline">
+                <input
+                  type="radio"
+                  value={prio.value}
+                  name="prorityOptions"
+                  className="form-check-input"
+                  id={`priority-${prio.level}`}
+                  onChange={this.onChangeTodoPriority}
+                />
+                <label
+                  htmlFor={`priority-${prio.level}`}
+                  className="form-check-label"
+                >
+                  {prio.value}
+                </label>
+              </div>
+            ))}
           </div>
 
           <div className="form-group">

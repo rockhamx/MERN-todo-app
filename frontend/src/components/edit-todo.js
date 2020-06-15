@@ -11,6 +11,11 @@ class EditTodo extends React.Component {
       priority: "",
       completed: false,
     };
+    this.priorities = [
+      { level: "Low", value: "低" },
+      { level: "Medium", value: "中" },
+      { level: "High", value: "高" },
+    ];
     this.id = props.match.params.id;
   }
 
@@ -76,48 +81,25 @@ class EditTodo extends React.Component {
           </div>
           <div className="form-group">
             <span>优先级：</span>
-            <div className="form-check form-check-inline">
-              <input
-                type="radio"
-                name="prorityOptions"
-                value="Low"
-                className="form-check-input"
-                id="priority-low"
-                checked={this.state.priority === "Low"}
-                onChange={this.onChangePriority}
-              />
-              <label htmlFor="priority-low" className="form-check-label">
-                低
-              </label>
-            </div>
-            <div className="form-check form-check-inline">
-              <input
-                type="radio"
-                name="prorityOptions"
-                value="Medium"
-                className="form-check-input"
-                id="priority-medium"
-                checked={this.state.priority === "Medium"}
-                onChange={this.onChangePriority}
-              />
-              <label htmlFor="priority-medium" className="form-check-label">
-                中
-              </label>
-            </div>
-            <div className="form-check form-check-inline">
-              <input
-                type="radio"
-                name="prorityOptions"
-                value="High"
-                className="form-check-input"
-                id="priority-high"
-                checked={this.state.priority === "High"}
-                onChange={this.onChangePriority}
-              />
-              <label htmlFor="priority-high" className="form-check-label">
-                高
-              </label>
-            </div>
+            {this.priorities.map((prio) => (
+              <div className="form-check form-check-inline">
+                <input
+                  type="radio"
+                  value={prio.value}
+                  name="prorityOptions"
+                  className="form-check-input"
+                  id={`priority-${prio.level}`}
+                  checked={this.state.priority === prio.value}
+                  onChange={this.onChangePriority}
+                />
+                <label
+                  htmlFor={`priority-${prio.level}`}
+                  className="form-check-label"
+                >
+                  {prio.value}
+                </label>
+              </div>
+            ))}
           </div>
           <div className="form-group form-check">
             <input

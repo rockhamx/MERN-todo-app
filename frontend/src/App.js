@@ -2,7 +2,8 @@ import React from "react";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import logo from "./logo.svg";
-import TodoList from "./components/todo-list";
+import "./App.css";
+import TodoList from "./components/TodoList";
 import EditTodo from "./components/edit-todo";
 import CreateTodo from "./components/create-todo";
 

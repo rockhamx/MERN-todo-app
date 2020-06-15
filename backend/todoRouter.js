@@ -49,7 +49,7 @@ todoRouter
           res.json({ todo: "todo updated." });
         })
         .catch((err) => {
-          res.status(400).send("failed to update todo.");
+          res.status(500).send("failed to update todo.");
         });
     });
   })
